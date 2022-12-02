@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--构造器注入：通过构造方法注入就相当于给构造方法的参数传值，构造注入的优势是通过
+    构造强制依赖关系，使得实例化出的bean对象一定是完整的或者可以使用的。-->
+
+    <!--第一种：下标赋值-->
+    <!--    <bean id="user" class="com.yang.pojo.User">-->
+    <!--        &lt;!&ndash;    <property name="name" value="jack"/>&ndash;&gt;-->
+    <!--        <constructor-arg index="0" value="rose"/>-->
+    <!--    </bean>-->
+
+    <!--第二种：通过类型创建，不建议使用-->
+    <!--    <bean id="user" class="com.yang.pojo.User">-->
+    <!--        <constructor-arg type="java.lang.String" value="杰克"/>-->
+    <!--    </bean>-->
+
+    <!--第三种：直接通过参数名赋值-->
+    <bean id="user" class="com.yang.pojo.User">
+        <constructor-arg name="name" value="露丝"/>
+    </bean>
+
+    <!--
+        id:bean的唯一标识符，也就是相当于我们学的对象名
+        class：bean 对象所对应的权限定名：包名 + 类型
+        name: 也是别名,而且name更高级，可以起多个别名，通过逗号空格分号等分割
+        -->
+    <bean id="userT" class="com.yang.pojo.UserT" name="u1,u2,u3">
+        <property name="name" value="rose"/>
+    </bean>
+
+    <!--别名-->
+    <alias name="user" alias="sagaf"/>
+</beans>

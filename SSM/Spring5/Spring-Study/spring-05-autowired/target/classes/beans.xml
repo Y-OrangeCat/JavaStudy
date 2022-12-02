@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="dog" class="com.yang.pojo.Dog"/>
+    <bean id="cat" class="com.yang.pojo.Cat"/>
+    <!--
+    byName:会自动在容器上下文中查找，和自己对象set方法后面的值对应的beanid!
+    byType:会自动在容器上下文中查找，和自己对象属性类型相同的bean !
+    byname的时候，需要保证所有bean的id唯一，并且这个bean需要和自动注入的属性的set方法的值一致
+    bytype的时候，需要保证所有bean的class唯一，并且这个bean需要和自动注入的属性的类型一致
+    -->
+    <bean id="people" class="com.yang.pojo.People" autowire="byName">
+        <property name="name" value="二郎神"/>
+<!--                <property name="dog" ref="dog"/>-->
+<!--                <property name="cat" ref="cat"/>-->
+    </bean>
+
+</beans>

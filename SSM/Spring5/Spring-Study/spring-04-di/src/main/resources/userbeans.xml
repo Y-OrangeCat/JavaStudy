@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--p命名空间可以直接注入属性的值 property-->
+    <bean id="user" class="com.yang.pojo.User" p:name="冰冰" p:age="21"/>
+
+    <!--c命名空间可以通过构造器注入 constructor-arg-->
+    <!--singleton 单例模式（默认）； prototype 原型模式-->
+    <bean id="user2" class="com.yang.pojo.User" c:name="菲菲" c:age="18" scope="prototype"/>
+
+
+</beans>

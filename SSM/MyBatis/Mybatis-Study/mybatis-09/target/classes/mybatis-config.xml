@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties">
+    </properties>
+
+    <settings>
+        <!--标准日志-->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--显示的开启全局缓存-->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+    <!--类型别名可为Java实体类设置别名。它仅用于XML配置，意在降低冗余的全限定类名书写-->
+    <typeAliases>
+        <!--<typeAlias type="com.yang.pojo.User" alias="User"/>-->
+        <!--指定一个包名，MyBatis 会在包名下面搜索需要的 Java Bean,在没有注解的情况下，会使用 Bean 的首字母小写的非限定类名来作为它的别名。-->
+        <package name="com.yang.pojo"/>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+            </transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--加载sql映射文件-->
+    <!--扫描mapper.xml-->
+    <mappers>
+        <!-- 使用映射器接口实现类的完全限定类名 -->
+        <mapper class="com.yang.dao.UserMapper"/>
+    </mappers>
+</configuration>
