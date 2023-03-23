@@ -1,6 +1,7 @@
 package com.yang.job;
 
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 /**
  * @Description: 定时任务  (SpringBoot 中的 @Scheduled 注解为定时任务提供了一种很简单的实现，

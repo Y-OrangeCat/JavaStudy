@@ -2,6 +2,7 @@ package com.yang.controller;
 
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.fastjson.JSON;
+import com.yang.constants.SystemConstants;
 import com.yang.domain.ResponseResult;
 import com.yang.domain.entity.Category;
 import com.yang.domain.vo.CategoryVo;
@@ -12,9 +13,11 @@ import com.yang.utils.BeanCopyUtils;
 import com.yang.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**

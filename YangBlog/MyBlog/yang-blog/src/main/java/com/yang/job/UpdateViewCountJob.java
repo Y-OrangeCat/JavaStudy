@@ -3,6 +3,7 @@ package com.yang.job;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.yang.constants.SystemConstants;
 import com.yang.domain.entity.Article;
+import com.yang.mapper.ArticleMapper;
 import com.yang.service.ArticleService;
 import com.yang.utils.RedisCache;
 import org.springframework.beans.factory.annotation.Autowired;

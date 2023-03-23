@@ -2,6 +2,7 @@ package com.yang.controller;
 
 import com.yang.domain.ResponseResult;
 import com.yang.domain.entity.Menu;
+import com.yang.domain.vo.MenuListVo;
 import com.yang.domain.vo.MenuTreeVo;
 import com.yang.domain.vo.MenuVo;
 import com.yang.domain.vo.RoleMenuTreeSelectVo;

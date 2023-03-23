@@ -5,6 +5,8 @@ import com.yang.domain.ResponseResult;
 import com.yang.domain.entity.Link;
 import com.yang.domain.vo.PageVo;
 
+import java.util.List;
+
 /**
  * 友链(Link)表服务接口
  * @author makejava

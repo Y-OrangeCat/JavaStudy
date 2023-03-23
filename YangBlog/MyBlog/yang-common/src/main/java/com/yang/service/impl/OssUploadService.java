@@ -13,10 +13,13 @@ import com.yang.enums.AppHttpCodeEnum;
 import com.yang.exception.SystemException;
 import com.yang.service.UploadService;
 import com.yang.utils.PathUtils;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -25,15 +28,13 @@ import java.io.InputStream;
  * @Date: 2023/2/7 0:53
  * @Version: 1.0
  */
+@Data
 @Service
 @ConfigurationProperties(prefix = "oss")
 public class OssUploadService implements UploadService {
     private String accessKey;
     private String secretKey;
     private String bucket;
-
-    public OssUploadService() {
-    }
 
     @Override
     public ResponseResult uploadImg(MultipartFile img) {
@@ -89,66 +90,5 @@ public class OssUploadService implements UploadService {
             //ignore
         }
         return "www";
-    }
-
-    public String getAccessKey() {
-        return this.accessKey;
-    }
-
-    public String getSecretKey() {
-        return this.secretKey;
-    }
-
-    public String getBucket() {
-        return this.bucket;
-    }
-
-    public void setAccessKey(String accessKey) {
-        this.accessKey = accessKey;
-    }
-
-    public void setSecretKey(String secretKey) {
-        this.secretKey = secretKey;
-    }
-
-    public void setBucket(String bucket) {
-        this.bucket = bucket;
-    }
-
-    public boolean equals(final Object o) {
-        if (o == this) return true;
-        if (!(o instanceof OssUploadService)) return false;
-        final OssUploadService other = (OssUploadService) o;
-        if (!other.canEqual((Object) this)) return false;
-        final Object this$accessKey = this.getAccessKey();
-        final Object other$accessKey = other.getAccessKey();
-        if (this$accessKey == null ? other$accessKey != null : !this$accessKey.equals(other$accessKey)) return false;
-        final Object this$secretKey = this.getSecretKey();
-        final Object other$secretKey = other.getSecretKey();
-        if (this$secretKey == null ? other$secretKey != null : !this$secretKey.equals(other$secretKey)) return false;
-        final Object this$bucket = this.getBucket();
-        final Object other$bucket = other.getBucket();
-        if (this$bucket == null ? other$bucket != null : !this$bucket.equals(other$bucket)) return false;
-        return true;
-    }
-
-    protected boolean canEqual(final Object other) {
-        return other instanceof OssUploadService;
-    }
-
-    public int hashCode() {
-        final int PRIME = 59;
-        int result = 1;
-        final Object $accessKey = this.getAccessKey();
-        result = result * PRIME + ($accessKey == null ? 43 : $accessKey.hashCode());
-        final Object $secretKey = this.getSecretKey();
-        result = result * PRIME + ($secretKey == null ? 43 : $secretKey.hashCode());
-        final Object $bucket = this.getBucket();
-        result = result * PRIME + ($bucket == null ? 43 : $bucket.hashCode());
-        return result;
-    }
-
-    public String toString() {
-        return "OssUploadService(accessKey=" + this.getAccessKey() + ", secretKey=" + this.getSecretKey() + ", bucket=" + this.getBucket() + ")";
     }
 }
