@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yang.mapper.MenuMapper">
+    <!--查询用户权限信息-->
+    <select id="selectPermsByUserId" resultType="string">
+        SELECT distinct m.perms
+        FROM sys_user_role ur
+                 LEFT JOIN sys_role_menu rm ON ur.role_id = rm.role_id
+                 LEFT JOIN sys_menu m ON m.id = rm.menu_id
+        WHERE ur.user_id = #{userId}
+          AND m.menu_type IN ('C', 'F')
+          AND m.status = 0
+          AND m.del_flag = 0
+    </select>
+
+    <!--查询管理员所有菜单-->
+    <select id="selectAllRouterMenu" resultType="com.yang.domain.entity.Menu">
+        SELECT DISTINCT m.id,
+                        m.parent_id,
+                        m.menu_name,
+                        m.path,
+                        m.component,
+                        m.visible,
+                        m.status,
+                        IFNULL(m.perms, '') AS perms,
+                        m.is_frame,
+                        m.menu_type,
+                        m.icon,
+                        m.order_num,
+                        m.create_time
+        FROM sys_menu m
+        WHERE m.`menu_type` IN ('C', 'M')
+          AND m.`status` = 0
+          AND m.del_flag = 0
+        order by m.parent_id, m.order_num
+    </select>
+
+    <!--查询用户所拥有的菜单-->
+    <select id="selectRouterMenuTreeByUserId" resultType="com.yang.domain.entity.Menu">
+        SELECT DISTINCT m.id,
+                        m.parent_id,
+                        m.menu_name,
+                        m.path,
+                        m.component,
+                        m.visible,
+                        m.status,
+                        IFNULL(m.perms, '') AS perms,
+                        m.is_frame,
+                        m.menu_type,
+                        m.icon,
+                        m.order_num,
+                        m.create_time
+        FROM sys_user_role ur
+                 LEFT JOIN sys_role_menu rm ON ur.role_id = rm.role_id
+                 LEFT JOIN sys_menu m ON m.id = rm.menu_id
+        WHERE ur.user_id = #{userId}
+          AND m.`menu_type` IN ('C', 'M')
+          AND m.`status` = 0
+          AND m.del_flag = 0
+        order by m.parent_id, m.order_num
+    </select>
+
+    <!--查询角色的菜单id-->
+    <select id="selectMenuListByRoleId" resultType="java.lang.Long">
+        select m.id
+        from sys_menu m
+                 left join sys_role_menu rm on m.id = rm.menu_id
+        where rm.role_id = #{roleId}
+        order by m.parent_id, m.order_num
+    </select>
+</mapper>

@@ -1,0 +1,30 @@
+server:
+  port: 7777
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://121.41.110.195:3306/myset_blog?characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: myset_blog
+    password: 123456
+
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 5MB
+
+mybatis-plus:
+  configuration:
+    # 日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      id-type: auto
+
+oss:
+  accessKey: 4XeN_b0fPB-ZSCfKISV-Z4xvRdgmpOTIyREUQUxW
+  secretKey: zzgVm42Zq8WrrnFn-30SPLgakmmh9bVEdBKiKAD9
+  bucket: yanglong-blog1
